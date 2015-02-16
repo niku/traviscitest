@@ -3,11 +3,12 @@ language: objective-c
 before_install:
   - echo "**** before install ****"
   - brew update
-  - sudo brew outdated python || sudo brew upgrade python
-  - sudo brew outdated git || sudo brew upgrade git
+  - echo `which python`
+  - echo `which git`
 
 install:
   - echo "**** install ****"
+  - brew install python
   - git clone -b v3 https://github.com/cocos2d/cocos2d-console.git $HOME/cocos2d-console
 
 before_script:
