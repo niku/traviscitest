@@ -8,6 +8,7 @@ before_install:
 
 install:
   - echo "**** install ****"
+  - brew install closure-compiler
   - git clone -b v3 https://github.com/cocos2d/cocos2d-console.git $HOME/cocos2d-console
 
 before_script:
@@ -20,4 +21,5 @@ before_script:
 
 script:
   - echo "**** script ****"
-  - cocos compile --platform web --src $TRAVIS_BUILD_DIR --dst web
+  - cocos compile --platform web --src $TRAVIS_BUILD_DIR --dst target/web --use_closure_compiler
+  - echo `ls target/web`
