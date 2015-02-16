@@ -5,6 +5,8 @@ before_install:
   - brew update
   - echo `python --version`
   - echo `git --version`
+  - echo `ant -version`
+  - echo `which ant`
 
 install:
   - echo "**** install ****"
