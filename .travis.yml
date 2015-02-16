@@ -5,13 +5,14 @@ before_install:
   - brew update
   - echo `python --version`
   - echo `git --version`
-  - echo `ant -version`
-  - echo `which ant`
 
 install:
   - echo "**** install ****"
+  - brew install ant
   - brew install closure-compiler
   - git clone -b v3 https://github.com/cocos2d/cocos2d-console.git $HOME/cocos2d-console
+  - echo `ant -version`
+  - echo `which ant`
 
 before_script:
   - echo "**** before_script ****"
