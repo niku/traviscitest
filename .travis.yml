@@ -1,5 +1,9 @@
 language: objective-c
 
+branches:
+  only:
+    - master
+
 before_install:
   - echo "**** before install ****"
   - brew update
