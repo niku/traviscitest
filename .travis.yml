@@ -1,5 +1,7 @@
 language: objective-c
 
+sudo: false
+
 env:
   global:
     - GIT_COMMITTER_NAME=niku
