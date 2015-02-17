@@ -48,6 +48,7 @@ after_success:
   - mv $TRAVIS_BUILD_DIR/runtime/html5/* .
   - git add .
   - git commit -a -m "Built by $TRAVIS_COMMIT"
-  - git push https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages
+  - git status
+  - git push -u https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages
   - popd
   - popd
