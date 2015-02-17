@@ -24,7 +24,7 @@ before_install:
 install:
   - brew install ant
   - brew install closure-compiler
-  - git clone -b v3 https://github.com/cocos2d/cocos2d-console.git $HOME/cocos2d-console
+  - git clone https://github.com/cocos2d/cocos2d-console.git $HOME/cocos2d-console -b v3
 
 before_script:
   - export COCOS_CONSOLE_ROOT="$HOME/cocos2d-console/bin"
