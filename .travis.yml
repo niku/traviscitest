@@ -1,5 +1,9 @@
 language: objective-c
 
+env:
+  global:
+    - secure: "MVujlkd82//ppLZqkpAXb09b9JdUNto9uWCrgy2S5L+htAwoRfsrYKG/qoUVdy+viVCb8iNMgo6Xb/Ap16XKuc2kKhCtGAenbYqpO9Y/OZdOMF6a4ds6dmPaBngHBs6FoIMjH3l7MqF7cPzAKq5bbTr9rtTBnl40VCOWrsKQ9uM="
+
 branches:
   only:
     - master
