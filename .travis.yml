@@ -27,3 +27,15 @@ script:
   - echo "**** script ****"
   - echo "no" | cocos compile --platform web --source-map --advanced --verbose
   - echo `ls -l runtime/html5`
+
+after_success:
+  - echo "**** after success ****"
+  - pushd $HOME
+  - (git clone git://github.com:$TRAVIS_REPO_SLUG.git html --reference $TRAVIS_BUILD_DIR -b gh-pages) || (git clone git://github.com:$TRAVIS_REPO_SLUG.git html --reference $TRAVIS_BUILD_DIR && cd gh-pages && git checkout --orphan gh-pages && git rm -rf .)
+  - pushd html
+  - mv $TRAVIS_BUILD_DIR/runtime/html5/* .
+  - git add .
+  - git commit -a -m "Built by $TRAVIS_COMMIT"
+  - git push --quiet https://$GH_TOKEN@github.com/traviscitest.git gh-pages 2> /dev/null
+  - popd
+  - popd
