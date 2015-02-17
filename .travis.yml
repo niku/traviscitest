@@ -44,13 +44,7 @@ script:
 
 after_success:
   - echo "**** after success ****"
-  - pushd $HOME
-  - (git clone git://github.com/$TRAVIS_REPO_SLUG.git html --reference $TRAVIS_BUILD_DIR -b gh-pages) || (git clone git://github.com/$TRAVIS_REPO_SLUG.git html --reference $TRAVIS_BUILD_DIR && cd gh-pages && git checkout --orphan gh-pages && git rm -rf .)
-  - pushd html
+  - (git clone git://github.com/$TRAVIS_REPO_SLUG.git $HOME/html --reference $TRAVIS_BUILD_DIR -b gh-pages && pushd $HOME/html) || (git clone git://github.com/$TRAVIS_REPO_SLUG.git $HOME/html --reference $TRAVIS_BUILD_DIR && pushd $HOME/html && git checkout --orphan gh-pages && git rm -rf .)
   - mv $TRAVIS_BUILD_DIR/runtime/html5/* .
-  - git add .
-  - git commit -a -m "Built by $TRAVIS_COMMIT"
-  - git status
-  - git push -u https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages
-  - popd
+  - git add . && git commit -a -m "Built by $TRAVIS_COMMIT" && git push -u https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages
   - popd
