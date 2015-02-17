@@ -2,6 +2,10 @@ language: objective-c
 
 sudo: false
 
+cache:
+  directories:
+    - /usr/local
+
 env:
   global:
     - GIT_COMMITTER_NAME=niku
@@ -44,8 +48,6 @@ script:
 
 after_success:
   - echo "**** after success ****"
-  - (git clone git://github.com/$TRAVIS_REPO_SLUG.git $HOME/html --reference $TRAVIS_BUILD_DIR -b gh-pages && pushd $HOME/html) || (git clone git://github.com/$TRAVIS_REPO_SLUG.git $HOME/html --reference $TRAVIS_BUILD_DIR && pushd $HOME/html && git checkout --orphan gh-pages && git rm -rf .)
-  - echo `pwd`
+  - (git clone git://github.com/$TRAVIS_REPO_SLUG.git $HOME/html --reference $TRAVIS_BUILD_DIR -b gh-pages) || (git clone git://github.com/$TRAVIS_REPO_SLUG.git $HOME/html --reference $TRAVIS_BUILD_DIR && pushd $HOME/html && git checkout --orphan gh-pages && git rm -rf .)
   - mv $TRAVIS_BUILD_DIR/runtime/html5/* $HOME/html
-  - git add . && git commit -a -m "Built by $TRAVIS_COMMIT" && git push https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages
-  - popd
+  - cd $HOME/html && git add . && git commit -a -m "Built by $TRAVIS_COMMIT" && git push https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG.git gh-pages
