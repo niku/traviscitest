@@ -2,6 +2,10 @@ language: objective-c
 
 env:
   global:
+    - GIT_COMMITTER_NAME=niku
+    - GIT_COMMITTER_EMAIL=niku@niku.name
+    - GIT_AUTHOR_NAME=niku
+    - GIT_AUTHOR_EMAIL=niku@niku.name
     - secure: "MVujlkd82//ppLZqkpAXb09b9JdUNto9uWCrgy2S5L+htAwoRfsrYKG/qoUVdy+viVCb8iNMgo6Xb/Ap16XKuc2kKhCtGAenbYqpO9Y/OZdOMF6a4ds6dmPaBngHBs6FoIMjH3l7MqF7cPzAKq5bbTr9rtTBnl40VCOWrsKQ9uM="
 
 branches:
